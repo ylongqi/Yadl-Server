@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ADL App">
+    <meta name="author" content="Small Data Lab">
+
+    <title>YADL</title>
+
+    <link rel="icon" href="webImage/logo/activity.png">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="customCSS/adl.css" rel="stylesheet">
+    
+    <body>
+        <div class="container" id="front">
+            <div class="row logo">
+                <a href="index.html"><img src="webImage/logo/yadl.png" alt="Yadl"></a>
+            </div>
+            <div class="row" id="gSignInWrapper">
+                <div id="myButton" class="classesToStyleWith">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container" id="yadl">
+
+            <div id="game">
+                <div class="row">
+                    <div class = "col-md-12">
+                        <p class="lead text-center instruction">Hi, <span id="dispname"></span> <a id="signout">(Sign out)</a> how difficult is this activity because of your RA on a bad day?</p>
+                    </div>
+                </div>
+
+                <div class="container image_area">
+                    <div class="row img_wrapper">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center"><img src="" class="img-thumbnail choice" id="picture">
+                        <div class="choicebox choicetext"><p class="lead" id="pictureText"></p></div></div>
+                    </div>
+
+                    <div class="row" id="progress_area">
+                        <div class="col-md-12 col-md-12 col-sm-12 text-center">
+                            <p class="imageProgress lead"><span id="currentIndex"></span> of <span id="totalNumber"></span></p>
+                        </div>
+                    </div>
+                    <div class="row" id="load_area">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <img src="webImage/loading.gif" alt="loading..." class="loading">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <a><div class="easy text-center"><span class="glyphicon glyphicon-plus-sign"></span> Easy</div></a>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <a><div class="moderate text-center"><span class="glyphicon glyphicon-ok-sign"></span> Moderate</div></a>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <a><div class="hard text-center"><span class="glyphicon glyphicon-minus-sign"></span> Hard</div></a>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 listInstruction lead col-sm-12 col-xs-12"><i>Hard activity list:</i></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="progresslist">
+                            
+                        </div>
+                    </div>           
+                </div>
+            </div>
+
+            <div id="result">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <p class="lead title-result">Your hard activities on a bad day</p>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <a><p id="finallogout" class="lead">EXIST and LOG OUT</p></a>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Add Hard Activity..." id="inputactivity">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="add">ADD</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="resultlist">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        <br /><br />
+
+        <div class="container">
+            <div class="footer">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12"><p class="text-center">Powered by <a href="http://getbootstrap.com/">Bootstrap</a></p></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12"><p class="text-center">&copy; <a href="http://smalldata.io/">Small Data Lab@CornellTech</a></p></div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="jquery/jquery-1.11.2.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="customJS/adl.js"></script>
+        <script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script>
+    
+    </body>
+</html>

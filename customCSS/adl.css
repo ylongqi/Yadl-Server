@@ -1,0 +1,327 @@
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+a:link { text-decoration: none}
+a:visited { text-decoration: none}
+a:hover { text-decoration: none}
+a:active{ text-decoration: none}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#logo{
+    display:block;
+    width:170px;
+    margin-bottom:10px;
+}
+
+.nav{
+    padding-top:10px;
+}
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+}
+
+.choice{
+    display:none;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    max-height: 370px;
+}
+
+.description{
+    margin-top: 20px;
+    margin-bottom:10px;
+}
+
+#name{
+    text-weight:normal;
+    font-size:18px;
+}
+
+.hard{
+    color:rgb(200, 0, 0);
+    font-size: 26px;
+    margin-bottom:20px;
+    margin-top:0px;
+    cursor:pointer;
+}
+
+.hard:hover {
+    color:rgb(150, 0, 0);
+    text-decoration: none;
+}
+
+.moderate{
+    color:rgb(0, 0, 200);
+    font-size: 26px;
+    margin-bottom:20px;
+    margin-top:0px;
+    cursor:pointer;
+}
+
+.moderate:hover {
+    color:rgb(0, 0, 150);
+    text-decoration: none !important;
+}
+
+.easy{
+    color:rgb(0, 200, 0);
+    font-size: 26px;
+    margin-bottom:20px;
+    margin-top: 0px;
+    cursor:pointer;
+}
+
+.easy:hover {
+    color:rgb(0, 150, 0);
+    text-decoration: none;
+}
+
+.listInstruction{
+    margin-top:6px;
+    font-size: 18px;
+}
+
+.progressbar{
+    display:inline-block;
+    width:62px;
+    height:62px;
+    margin-right:4px;
+    margin-bottom:15px;
+}
+
+.loading {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 30px;
+}
+
+.img_wrapper.loaded img{
+    opacity: 0;
+}
+
+.img_wrapper img{
+    opacity: 1;
+
+    -webkit-transition: opacity 150ms;
+    -moz-transition: opacity 150ms;
+    -ms-transition: opacity 150ms;
+    transition: opacity 150ms;
+}
+
+.image_area{
+    display:block;
+}
+
+.columnchart{
+    width:400px;
+    display:inline-block;
+    text-align: center;
+}
+
+.bullet-result{
+    margin-right:30px;
+}
+
+.bullet-area-result{
+    text-align: center;
+}
+
+.detail-feed{
+    display:none;
+}
+
+.evaluate{
+    display:none;
+}
+
+.instruction{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.button-area{
+    margin-top:30px;
+}
+
+.number-instruct{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+#progresslist{
+    min-height: 50px;
+}
+
+.activitybox{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    vertical-align: middle;
+    margin-right:10px;
+    margin-top: 20px;
+}
+
+.activitytext{
+    position: relative;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    line-height: 1.42857;
+}
+
+.activitytext p{
+    font-size: 18px;
+    font-style:italic;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+}
+
+.progressbox{
+    display:inline-block;
+    vertical-align: middle;
+    width:62px;
+    height:62px;
+    margin-right:4px;
+    margin-bottom:15px;
+}
+
+.progresstext{
+    position: relative;
+    border: 1px solid #DDD;
+    border-radius: 50%;
+    line-height: 1.42857;
+}
+
+.progresstext p{
+    font-size: 7px;
+    font-style:italic;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+}
+
+.choicebox{
+    display: block;
+    min-width: 200px;
+    min-height: 300px;
+    max-width: 370px;
+    max-height: 370px;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.choicetext{
+    position: relative;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    line-height: 1.42857;
+}
+
+.choicetext p{
+    font-size: 30px;
+    font-style:italic;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+}
+
+.title-result{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:rgb(200, 0, 0);
+}
+
+#finallogout{
+    font-size: 15px;
+    text-align: center;
+    cursor:pointer;
+}
+
+.imageProgress{
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 30px;
+}
+
+.logo img{
+    width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.logo{
+    margin-top: 100px;
+    margin-bottom: 0px;
+
+}
+
+#yadl{
+    display:none;
+}
+
+#gSignInWrapper{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#signout{
+    cursor:pointer;
+}
