@@ -22,11 +22,11 @@ class amDBAPI{
     public static function getReferenceByIndex($index){
         
         $db = db_Connect();
-	$result = $db -> query("select reference from amDB where dataIndex = '".$index."'");
+        $result = $db -> query("select reference from amDB where dataIndex = '".$index."'");
 
-	if(!$result){
+        if(!$result){
             throw new Exception("Database Error!");
-	} else {
+        } else {
             return $result -> fetch(PDO::FETCH_ASSOC);
         }
     }

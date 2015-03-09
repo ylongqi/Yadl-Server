@@ -1,4 +1,5 @@
 <?php
+
 function db_Connect(){
     
     //$db = new mysqli('localhost', 'yadamanager', 'yada', 'adl');

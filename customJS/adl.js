@@ -6,8 +6,9 @@ var img_loaded = true;
 var q1, q2;
 var detail_state = 0;
 
-var cl_id, user_id;
+var cl_id;
 
+/*
 function render() {
 
     var additionalParams = {
@@ -64,6 +65,21 @@ function requestCallback(jsonResp, rawResp) {
     }
 
 }
+*/
+function init_handle(data, status) {
+    if(data === "true"){
+        $("#front").slideUp();
+        $("#yadl").slideDown();
+        
+        $.post("adl_backend/img_query.php", {
+            client_id: cl_id
+        }, update_pair);
+        
+        $("#load_area").hide();
+        $("#result").hide();
+        $("#progresslist").html("");
+    }
+}
 
 function send_text() {
 
@@ -75,8 +91,7 @@ function send_text() {
     }
     $.post("adl_backend/text_store.php", {
         word: activity,
-        client_id: cl_id,
-        user_id: user_id
+        client_id: cl_id
     });
 
 }
@@ -229,14 +244,28 @@ $(document).ready(function () {
 
     $.post("adl_backend/init.php", {
         client_id: cl_id
-    });
+    }, init_handle);
 
     $("#signout").click(function () {
-        gapi.auth.signOut();
+        $.get("adl_backend/logout.php", function(data){
+            if(data === "success"){
+                location.reload();
+            }
+        });
+    });
+    
+    $("#ohmage").click(function(){
+        $.get("adl_backend/auth_callback.php", function(data) {
+            window.location.href = data;
+        });
     });
     
     $("#finallogout").click(function(){
-        gapi.auth.signOut();
+        $.get("adl_backend/logout.php", function(data){
+            if(data === "success"){
+                location.reload();
+            }
+        });
     });
 
     $(".easy").click(function () {
@@ -247,8 +276,7 @@ $(document).ready(function () {
                 choice: "0",
                 img: img,
                 src: img_src,
-                client_id: cl_id,
-                user_id: user_id
+                client_id: cl_id
             }, update_pair);
         }
     });
@@ -261,8 +289,7 @@ $(document).ready(function () {
                 choice: "1",
                 img: img,
                 src: img_src,
-                client_id: cl_id,
-                user_id: user_id
+                client_id: cl_id
             }, update_pair);
         }
     });
@@ -277,8 +304,7 @@ $(document).ready(function () {
                 choice: "2",
                 img: img,
                 src: img_src,
-                client_id: cl_id,
-                user_id: user_id
+                client_id: cl_id
             }, update_pair);
         }
     });

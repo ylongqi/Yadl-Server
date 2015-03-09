@@ -1,55 +1,77 @@
 <?php
 namespace OmhStack;
+use \HttpRequest as HttpRequest;
+use \DateTime as DateTime;
 
 class OmhAuth{
     
     protected static $cliend_id = "yadl";
     protected static $client_secret = "IcpeG1Fbg2";
+    protected static $dsu_url = "https://lifestreams.smalldata.io/dsu/";
+    #protected static $dsu_url = "https://ohmage-omh.smalldata.io/dsu/";
     
-    public static function redirect_signin(){
-        header('Location: https://lifestreams.smalldata.io/dsu/oauth/authorize?client_id='
-                .OmhAuth::$cliend_id.'&response_type=code');
+    public static function redirect_address(){
+        return OmhAuth::$dsu_url . 'oauth/authorize?client_id='
+                .OmhAuth::$cliend_id.'&response_type=code';
     }
     
     //Code: Access Code returned from Omh Server
     public static function get_access_token($code){
         $encode_id_secret = base64_encode(OmhAuth::$cliend_id.':'.OmhAuth::$client_secret);
-        $post_url = 'https://lifestreams.smalldata.io/dsu/oauth/token';
+        $post_url = OmhAuth::$dsu_url . 'oauth/token';
         $post_data["code"] = $code;
         $post_data["grant_type"] = 'authorization_code';
-        $post_header["Authorization"] = "Base ".$encode_id_secret;
+        $post_header["Authorization"] = "Basic ".$encode_id_secret;
         
-        $request = new HTTPRequest($post_url, HttpRequest::METH_POST);
+        $request = new HttpRequest($post_url, HttpRequest::METH_POST);
         $request -> addHeaders($post_header);
         $request -> addPostFields($post_data);
         $request -> send();
         
-        return json_decode($request -> getResponseBody());
+        $file = fopen("test.txt","w");
+        fwrite($file,$request -> getResponseBody());
+        fclose($file);
+        
+        return json_decode($request -> getResponseBody(), true);
     }
     
     //refresh_token: Refresh token returned from Omh Server
     public static function refresh_access_token($refresh_token){
         $encode_id_secret = base64_encode(OmhAuth::$cliend_id.':'.OmhAuth::$client_secret);
-        $post_url = 'https://lifestreams.smalldata.io/dsu/oauth/token';
+        $post_url = OmhAuth::$dsu_url . 'oauth/token';
         $post_data["refresh_token"] = $refresh_token;
         $post_data["grant_type"] = 'refresh_token';
         $post_header["Authorization"] = "Base ".$encode_id_secret;
         
-        $request = new HTTPRequest($post_url, HttpRequest::METH_POST);
+        $request = new HttpRequest($post_url, HttpRequest::METH_POST);
         $request -> addHeaders($post_header);
         $request -> addPostFields($post_data);
         $request -> send();
         
-        return json_decode($request -> getResponseBody());
+        return json_decode($request -> getResponseBody(), true);
+    }
+    
+    public static function check_valide_token($access_token){
+        $get_url = OmhAuth::$dsu_url.'oauth/check_token?token='.$access_token;
+        $request = new HttpRequest($get_url, HttpRequest::METH_GET);
+        $request -> send();
+        $respond = json_decode($request -> getResponseBody(), true);
+        
+        if(isset($respond["user_name"])){
+            return $respond["user_name"];
+        } else {
+            return false;
+        }
+    
     }
     
     public static function send_datapoint($access_token, $body_data){
-        $post_url = 'https://lifestreams.smalldata.io/dsu/dataPoints';
+        $post_url = OmhAuth::$dsu_url.'dataPoints';
         $post_header["Authorization"] = "Bearer ".$access_token;
         $post_data["header"] = OmhAuth::datapoint_header();
         $post_data["body"] = $body_data;
         
-        $request = new HTTPRequest($post_url, HttpRequest::METH_POST);
+        $request = new HttpRequest($post_url, HttpRequest::METH_POST);
         $request -> addHeaders($post_header);
         $request -> addPostFields($post_data);
         $request -> send();
