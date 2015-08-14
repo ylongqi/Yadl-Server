@@ -20,7 +20,7 @@ In this step, server will register the *client_id* and any subsequent **POST** p
 
 > Step 2: Ohmage Authorization.
 
-After user click *Ohmage Signin* Button, client sends a **GET** packet to **adl_backend/auth_callback.php** that will redirect the user to Ohmage. After this process is success, the user will be redirected to this page.
+After user click *Ohmage Signin* Button, client sends a **GET** packet to **adl_backend/auth_callback.php** that will redirect the user to Ohmage. After this process is success, the user will be redirected to **index.html**.
 
 > Step 3: Client Image Pulling.
 
