@@ -7,8 +7,8 @@ class OmhAuth{
     
     protected static $cliend_id = "yadl";
     protected static $client_secret = "IcpeG1Fbg2";
-    protected static $dsu_url = "https://lifestreams.smalldata.io/dsu/";
-    #protected static $dsu_url = "https://ohmage-omh.smalldata.io/dsu/";
+    #protected static $dsu_url = "https://lifestreams.smalldata.io/dsu/";
+    protected static $dsu_url = "https://ohmage-omh.smalldata.io/dsu/";
     
     public static function redirect_address(){
         return OmhAuth::$dsu_url . 'oauth/authorize?client_id='
@@ -68,13 +68,15 @@ class OmhAuth{
     public static function send_datapoint($access_token, $body_data){
         $post_url = OmhAuth::$dsu_url.'dataPoints';
         $post_header["Authorization"] = "Bearer ".$access_token;
+        $post_header["Content-type"] = "application/json";
         $post_data["header"] = OmhAuth::datapoint_header();
         $post_data["body"] = $body_data;
         
         $request = new HttpRequest($post_url, HttpRequest::METH_POST);
         $request -> addHeaders($post_header);
-        $request -> addPostFields($post_data);
+        $request -> setBody(json_encode($post_data));
         $request -> send();
+        file_put_contents("test.txt", json_encode($post_data));
         
         if($request -> getResponseCode() == 201){
             return true;
@@ -85,7 +87,7 @@ class OmhAuth{
     
     private static function datapoint_header(){
         $id = uniqid();
-        $creation_date_time = date(DateTime::ISO8601);
+        $creation_date_time = date("Y-m-d\TH:i:sP");
         $schema_id["namespace"] = "yadl";
         $schema_id["name"] = "adl_web";
         $schema_id["version"] = "1.0";

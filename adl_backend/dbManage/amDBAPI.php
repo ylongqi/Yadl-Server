@@ -4,11 +4,12 @@ require_once('dbManage/db_Connect.php');
 
 class amDBAPI{
     
-    private static $num = 26;
+    private static $num = 27;
     
     public static function getWordByIndex($index){
         
         $db = db_Connect();
+        
         $result = $db -> query("select word from amDB where dataIndex = '".$index."'");
         
         if(!$result){
@@ -57,7 +58,7 @@ class amDBAPI{
     public static function getAllImagesIndexWord(){
         
         $db = db_Connect();
-        $result = $db -> query("select dataIndex as img, word as text from amDB order by dataIndex limit ".(amDBAPI::$num));
+        $result = $db -> query("select dataIndex as img, word as text from amDB order by dataIndex ASC limit ".(amDBAPI::$num));
         
         if(!$result){
             throw new Exception("Database Error!");

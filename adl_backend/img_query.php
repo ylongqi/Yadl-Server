@@ -69,11 +69,16 @@ if (validateClient()) {
         #---- activity: Description
         #---- type: "image"
         #---- source: URL
-        if($_POST['choice'] == 2){
+        if($_POST['choice'] >= 1){
             $body_data = array();
-            $body_data["activity"] = amDBAPI::getWordByIndex($current_dataIndex);
+            $body_data["activity"] = amDBAPI::getWordByIndex($current_dataIndex["dataIndex"])["word"];
             $body_data["type"] = "image";
-            $body_data["source"] = amDBAPI::getReferenceByIndex($current_dataIndex);
+            if($_POST['choice'] == 1){
+                $body_data["level"] = "medium";
+            } else{
+                $body_data["level"] = "hard";
+            }
+            $body_data["source"] = amDBAPI::getReferenceByIndex($current_dataIndex["dataIndex"])["reference"];
             $token = OmhAuthTable::getToken($user_id);
             OmhAuth::send_datapoint($token["access_token"], $body_data);
         }

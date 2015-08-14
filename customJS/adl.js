@@ -151,7 +151,7 @@ function update_pair(data, status) {
     var JSONobj = JSON.parse(data);
 
     if (JSONobj.previous_image_src) {
-        if(JSONobj.previous_image_src.indexOf("edu-cornell-cs-sdl-yadl") >= 0){
+        if(JSONobj.previous_image_src.indexOf("cornell-nyc-sdl-yadl-image") >= 0){
             $("#progresslist").append(getProgressElement(progress_index, JSONobj.previous_image_src));
         }else {
             $("#progresslist").append(getProgressTextElement(progress_index, JSONobj.previous_image_src));
@@ -169,7 +169,7 @@ function update_pair(data, status) {
         $("#progress_area").hide();
         $("#load_area").show();
 
-        if (img_src.indexOf("edu-cornell-cs-sdl-yadl") >= 0) {
+        if (img_src.indexOf("cornell-nyc-sdl-yadl-image") >= 0) {
             $(".choicebox").hide();
             $(".choice").show();
             if ($("#picture").parent().hasClass("loaded")) {
@@ -196,7 +196,7 @@ function update_pair(data, status) {
         var hardList = JSONobj.hard_list;
 
         for (var i = 0; i < hardList.length; i++) {
-            if(hardList[i].indexOf("edu-cornell-cs-sdl-yadl") >= 0){
+            if(hardList[i].indexOf("cornell-nyc-sdl-yadl-image") >= 0){
                 $("#resultlist").append(getResultImgElement(hardList[i]));
             } else{
                 $("#resultlist").append(getResultTextElement(hardList[i]));
